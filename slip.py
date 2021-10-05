@@ -76,12 +76,12 @@ class Enlace:
         else:
             self.buffer = dadosatual[len(dadosatual)-1]
 
-        
-        #self.buffer = self.buffer.replace(b'\xdb\xdc', b'\xc0')
-        #self.buffer = self.buffer.replace(b'\xdb\xdd', b'\xdb')
-
         for i in range(len(dadosatual)-1):
             dadosatual[i] = dadosatual[i].replace(b'\xdb\xdc', b'\xc0')
             dadosatual[i] = dadosatual[i].replace(b'\xdb\xdd', b'\xdb')
             if dadosatual[i] != b'':
-                self.callback(dadosatual[i])
+                try:
+                    self.callback(dadosatual[i])
+                except:
+                    import traceback
+                    traceback.print_exc
