@@ -85,3 +85,5 @@ class Enlace:
                 except:
                     import traceback
                     traceback.print_exc
+                finally:
+                    dados = b''
